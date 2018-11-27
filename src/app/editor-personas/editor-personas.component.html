@@ -1,0 +1,19 @@
+<h3>Personas</h3>
+<p>
+  <label>ID: <input disabled type="text" [(ngModel)]="personaSelected.id"></label>
+</p>
+<p>
+  <label>Nombre(s): <input type="text" [(ngModel)]="personaSelected.nombres"></label>
+</p>
+<p>
+  <label>Apellido(s): <input type="text" [(ngModel)]="personaSelected.apellido"></label>
+</p>
+<p>
+  <label>Fecha de nacimiento: <input type="text" [(ngModel)]="personaSelected.fechaNacimiento"></label>
+</p>
+<button (click)="onShowPersonaObject()">Mostrar en objeto</button>
+<br>
+<p>
+  <button (click)="onPreviousPersona()"><</button>
+  <button (click)="onNextPersona()">></button>
+</p>
