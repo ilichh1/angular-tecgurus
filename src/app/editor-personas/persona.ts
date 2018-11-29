@@ -1,15 +1,13 @@
 export class Persona {
 
-    constructor (
+    constructor(
         public id: number,
-        public nombres: string,
-        public apellido: string,
-        public fechaNacimiento: string
-    ) {}
+        public name: string,
+        public surname: string
+    ) {  }
 
     public toString(): string {
-        return Object.keys(this)
-            .reduce((accumulator, currentValue) => 
-                `${accumulator}, ${this[currentValue]}`)
+        return `${this.id}, ${this.name}, ${this.surname}`;
+        // return this.id + ', ' + this.name + ', ' + this.surname;
     }
 }

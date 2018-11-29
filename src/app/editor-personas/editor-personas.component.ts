@@ -7,47 +7,52 @@ import { Persona } from './persona';
   styleUrls: ['./editor-personas.component.css']
 })
 export class EditorPersonasComponent implements OnInit {
-  // private persona: Persona;
-  private personas: Persona[] = [];
-  private idPersonas: number = 0;
-  private personaSelected: Persona;
+  private personas: Persona[];
+  private personasIndex = 0;
+  private personaSeleccionada: Persona;
 
   constructor() { }
 
   ngOnInit() {
-    this.personas.push(
-      new Persona(0, 'Ilich', 'Arredondo', '26/06/1998'),
-      new Persona(1, 'Paco', 'El Chato', '01/06/1990'),
-      new Persona(2, 'Francisco', 'Lerdo', '01/01/1995')
-    );
+    this.inicializarPersonas();
     this.setPersona();
   }
-
-  setPersona() {
-    this.personaSelected = this.personas[this.idPersonas];
+  
+  private setPersona(): void {
+    this.personaSeleccionada = this.personas[this.personasIndex];
   }
 
-  onPreviousPersona() {
-    if (this.idPersonas == 0) {
-      this.idPersonas = this.personas.length - 1;
+  private siguientePersona(): void {
+    if (this.personasIndex == this.personas.length - 1) {
+      this.personasIndex = 0;
     } else {
-      this.idPersonas--;
-    }
-
-    this.setPersona();
-  }
-
-  onNextPersona() {
-    if (this.idPersonas == (this.personas.length - 1)) {
-      this.idPersonas = 0;
-    } else {
-      this.idPersonas++;
+      this.personasIndex++;
     }
     this.setPersona();
   }
 
-  onShowPersonaObject() {
-    window.alert(this.personaSelected.toString());
+  private previaPersona(): void {
+    if(this.personasIndex == 0) {
+      this.personasIndex = this.personas.length - 1;
+    } else {
+      this.personasIndex--;
+    }
+    this.setPersona();
+  }
+
+  private inicializarPersonas(): void {
+    this.personas = [
+      new Persona(0, 'Ilich', 'Arredondo'),
+      new Persona(1, 'Paco', 'El Chato'),
+      new Persona(2, 'Sebastian', 'Algo'),
+      new Persona(3, 'Eleco', 'Loco'),
+      new Persona(4, 'Leonardo', 'DiDavinchi'),
+      new Persona(5, 'La', 'Brittany')
+    ];
+  }
+
+  private mostrarPersona(): void {
+    window.alert(this.personaSeleccionada.toString());
   }
 
 }

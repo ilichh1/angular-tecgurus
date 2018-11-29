@@ -1,19 +1,29 @@
-<h3>Personas</h3>
+<h2>Editor de personas</h2>
+<div class="form">
+  <p>
+    <label>ID: 
+      <input type="text" disabled [(ngModel)]="personaSeleccionada.id">
+    </label>
+  </p>
+  <p>
+    <label>Nombre: 
+      <input type="text" [(ngModel)]="personaSeleccionada.name">
+    </label>
+  </p>
+  <p>
+    <label>Apellido: 
+        <input type="text" [(ngModel)]="personaSeleccionada.surname">
+    </label>
+  </p>
+</div>
+<button (click)="mostrarPersona()">MOSTRAR</button>
 <p>
-  <label>ID: <input disabled type="text" [(ngModel)]="personaSelected.id"></label>
+  <button (click)="previaPersona()">ANTERIOR</button>
+  <button (click)="siguientePersona()">SIGUIENTE</button>
 </p>
-<p>
-  <label>Nombre(s): <input type="text" [(ngModel)]="personaSelected.nombres"></label>
-</p>
-<p>
-  <label>Apellido(s): <input type="text" [(ngModel)]="personaSelected.apellido"></label>
-</p>
-<p>
-  <label>Fecha de nacimiento: <input type="text" [(ngModel)]="personaSelected.fechaNacimiento"></label>
-</p>
-<button (click)="onShowPersonaObject()">Mostrar en objeto</button>
-<br>
-<p>
-  <button (click)="onPreviousPersona()"><</button>
-  <button (click)="onNextPersona()">></button>
-</p>
+<hr>
+<ul>
+  <li *ngFor="let personaA of personas">{{ personaA.toString() }}</li>
+</ul>
+<hr>
+<b *ngIf="personaSeleccionada.name == 'Ilich'">¡El amo esta seleccionado!</b>
