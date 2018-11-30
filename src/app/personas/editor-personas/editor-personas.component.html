@@ -2,28 +2,28 @@
 <div class="form">
   <p>
     <label>ID: 
-      <input type="text" disabled [(ngModel)]="personaSeleccionada.id">
+      <input type="text" disabled [(ngModel)]="persona.id">
     </label>
   </p>
   <p>
     <label>Nombre: 
-      <input type="text" [(ngModel)]="personaSeleccionada.name">
+      <input type="text" [(ngModel)]="persona.name">
     </label>
   </p>
   <p>
     <label>Apellido: 
-        <input type="text" [(ngModel)]="personaSeleccionada.surname">
+        <input type="text" [(ngModel)]="persona.surname">
     </label>
   </p>
 </div>
-<button (click)="mostrarPersona()">MOSTRAR</button>
+<button (click)="onMostrarPersona()">MOSTRAR</button>
 <p>
-  <button (click)="previaPersona()">ANTERIOR</button>
-  <button (click)="siguientePersona()">SIGUIENTE</button>
+  <button (click)="onPreviaPersona()">ANTERIOR</button>
+  <button (click)="onSiguientePersona()">SIGUIENTE</button>
 </p>
 <hr>
 <ul>
-  <li *ngFor="let personaA of personas">{{ personaA.toString() }}</li>
+  <li *ngFor="let personaA of getAllPersonas()">{{ personaA.toString() }}</li>
 </ul>
 <hr>
-<b *ngIf="personaSeleccionada.name == 'Ilich'">¡El amo esta seleccionado!</b>
+<b *ngIf="persona.name == 'Ilich'">¡El amo esta seleccionado!</b>

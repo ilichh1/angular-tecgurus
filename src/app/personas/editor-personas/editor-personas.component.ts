@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonaService } from '../persona.service';
 import { Persona } from './persona';
 
 @Component({
@@ -7,52 +8,36 @@ import { Persona } from './persona';
   styleUrls: ['./editor-personas.component.css']
 })
 export class EditorPersonasComponent implements OnInit {
-  private personas: Persona[];
-  private personasIndex = 0;
-  private personaSeleccionada: Persona;
+  private persona: Persona;
 
-  constructor() { }
+  constructor(
+    private service: PersonaService
+  ) { }
 
   ngOnInit() {
-    this.inicializarPersonas();
-    this.setPersona();
+    this.updatePersona();
+  }
+
+  private updatePersona(): void {
+    this.persona = this.service.getPersonaSeleccionada();
+  }
+
+  private getAllPersonas(): Persona[] {
+    return this.service.getAllPersonas();
+  }
+
+  onMostrarPersona(): void {
+    this.service.alertarPersonaSeleccionada();
   }
   
-  private setPersona(): void {
-    this.personaSeleccionada = this.personas[this.personasIndex];
+  onSiguientePersona(): void {
+    this.service.siguientePersona();
+    this.updatePersona();
   }
 
-  private siguientePersona(): void {
-    if (this.personasIndex == this.personas.length - 1) {
-      this.personasIndex = 0;
-    } else {
-      this.personasIndex++;
-    }
-    this.setPersona();
-  }
-
-  private previaPersona(): void {
-    if(this.personasIndex == 0) {
-      this.personasIndex = this.personas.length - 1;
-    } else {
-      this.personasIndex--;
-    }
-    this.setPersona();
-  }
-
-  private inicializarPersonas(): void {
-    this.personas = [
-      new Persona(0, 'Ilich', 'Arredondo'),
-      new Persona(1, 'Paco', 'El Chato'),
-      new Persona(2, 'Sebastian', 'Algo'),
-      new Persona(3, 'Eleco', 'Loco'),
-      new Persona(4, 'Leonardo', 'DiDavinchi'),
-      new Persona(5, 'La', 'Brittany')
-    ];
-  }
-
-  private mostrarPersona(): void {
-    window.alert(this.personaSeleccionada.toString());
+  onPreviaPersona(): void {
+    this.service.previaPersona();
+    this.updatePersona();
   }
 
 }
