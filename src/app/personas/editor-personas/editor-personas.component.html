@@ -1,0 +1,29 @@
+<h2>Editor de personas</h2>
+<div class="form">
+  <p>
+    <label>ID: 
+      <input type="text" disabled [(ngModel)]="persona.id">
+    </label>
+  </p>
+  <p>
+    <label>Nombre: 
+      <input type="text" [(ngModel)]="persona.name">
+    </label>
+  </p>
+  <p>
+    <label>Apellido: 
+        <input type="text" [(ngModel)]="persona.surname">
+    </label>
+  </p>
+</div>
+<button (click)="onShowPersona()">MOSTRAR</button>
+<p>
+  <button (click)="onPreviousPersona()">ANTERIOR</button>
+  <button (click)="onNextPersona()">SIGUIENTE</button>
+</p>
+<hr>
+<ul>
+  <li *ngFor="let personaA of getAllPersonas()">{{ personaA.toString() }}</li>
+</ul>
+<hr>
+<b *ngIf="persona.name == 'Ilich'">¡El amo esta seleccionado!</b>
