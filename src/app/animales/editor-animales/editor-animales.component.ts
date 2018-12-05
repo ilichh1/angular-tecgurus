@@ -11,6 +11,7 @@ import { Persona } from '../../personas/persona';
 export class EditorAnimalesComponent implements OnInit {
 
   private animal: Animal;
+  private fontSize = 16;
 
   constructor(
     private animalService: AnimalService
@@ -32,6 +33,10 @@ export class EditorAnimalesComponent implements OnInit {
   onNextAnimal(): void {
     this.animalService.siguienteAnimal();
     this.actualizarAnimalSeleccionado();
+  }
+
+  onIdClicked(evt: number): void {
+    console.log("USUARIO DIO CLICK AL ID: " + evt);
   }
 
   private getAllCuidadores(): Persona[] {

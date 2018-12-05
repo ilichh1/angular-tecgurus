@@ -22,7 +22,8 @@
     <button (click)="onPrevAnimal()">Anterior</button>
     <button (click)="onNextAnimal()">Siguiente</button>
   </p>
-  <div [style.font-size.px]="10">
-    <app-visualizador-animal [animal]="animal"></app-visualizador-animal>
+  <div [style.font-size.px]="fontSize">
+    <input type="range" [(ngModel)]="fontSize" min="10" max="28">
+    <app-visualizador-animal [animal]="animal" (idClicked)="onIdClicked($event)"></app-visualizador-animal>
   </div>
 </div>
