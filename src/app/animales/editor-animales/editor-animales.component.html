@@ -1,0 +1,28 @@
+<div class="editor-animales">
+  <p>
+    <label>ID:
+      <input type="text" disabled [(ngModel)]="animal.id">
+    </label>
+  </p>
+  <p>
+    <label>Nombre:
+      <input type="text" [(ngModel)]="animal.nombre">
+    </label>
+  </p>
+  <p>
+    <label>Cuidador:
+      <select [(ngModel)]="animal.cuidador">
+        <option
+          *ngFor="let cuidador of getAllCuidadores()"
+          [ngValue]="cuidador">{{ cuidador.name }}</option>
+      </select>
+    </label>
+  </p>
+  <p>
+    <button (click)="onPrevAnimal()">Anterior</button>
+    <button (click)="onNextAnimal()">Siguiente</button>
+  </p>
+  <div [style.font-size.px]="10">
+    <app-visualizador-animal [animal]="animal"></app-visualizador-animal>
+  </div>
+</div>
