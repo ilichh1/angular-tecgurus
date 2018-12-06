@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Persona } from './persona';
 
 @Injectable({
@@ -8,6 +8,7 @@ export class PersonaService {
   private personas: Persona[];
   private personasIndex = 0;
   public personaSeleccionada: Persona;
+  public personaObservable = new EventEmitter<Persona>();
   
   constructor() {
     this.inicializarPersonas();
@@ -27,6 +28,7 @@ export class PersonaService {
 
   private setPersona(): void {
     this.personaSeleccionada = this.personas[this.personasIndex];
+    this.personaObservable.emit(this.personaSeleccionada);
   }
 
   public alertPersonAsText(): void {
