@@ -1,3 +1,4 @@
+<!--
 <h1>ESTA VIVO</h1>
 <hr>
 <app-componente1></app-componente1>
@@ -5,3 +6,15 @@
 <app-editor-personas></app-editor-personas>
 <hr>
 <app-editor-animales></app-editor-animales>
+-->
+<nav>
+    <ul>
+        <li>
+            <a routerLink="componente-1">Ir al Componente 1</a>
+        </li>
+        <li>
+            <a [routerLink]="['componente-2', 27, 'ruta-2']">Ir al Componente 1</a>
+        </li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>
